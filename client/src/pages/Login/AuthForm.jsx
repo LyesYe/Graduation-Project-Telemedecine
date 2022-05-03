@@ -12,62 +12,100 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import { ThemeProvider } from '@mui/material/styles';
 import { StyledEngineProvider } from '@mui/material';
-import { useState } from 'react'
-
-import './home2.css';
-
-
-
+import { useState , useEffect} from 'react'
+import { useNavigate } from 'react-router-dom'
+import './authForm.css';
+import axios from 'axios';
 
 
 
-export default function SignInSide()  {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
 
-    
-  };
+const AuthForm = () => {
 
+  const history = useNavigate()
 
-  const [email, setEmail] = useState('')
-	const [password, setPassword] = useState('')
+	const [inputs, setinputs] = useState({
+    username:"",
+    password:""
+  });
 
-	async function loginUser(event) {
-		
+  
+  const log = async () => {
 
-		const response = await fetch('http://localhost:3001/auth/login', {
+    console.log("hi")
+
+    const response = await fetch('http://localhost:3001/auth/login', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify({
-				email,
-				password,
+				// username,
+				// password,
 			}),
 		})
 
-		const data = await response.json()
+    const data = await response.json()
 		console.log(response.status);
 
-		if (response.status == 201) {
-			localStorage.setItem('token', data.token)
+
+    if (response.status == 201) {
+			// setAuthToken(json.token);
+			// setUser_name(json.user.username);
+			// setUsername(json.user.username);
 			alert('Login successful')
-			window.location.href = '/dashboard'
 		} else {
 			alert('Please check your username and password')
 		}
-		
-	}
 
 
+  };
 
-  return (
-    <StyledEngineProvider injectFirst>
+  const handleSubmit = (e) => {
+    
+    e.preventDefault();
+    console.log(inputs);
+    //send http request
+
+    sendRequest().then(() => history('/dashboard'));
+
+  };
+
+
+  const sendRequest = async () => {
+    const res = await axios.post('http://localhost:3001/auth/login',{
+      username: inputs.username,
+      password: inputs.password,
+    }).catch(err => console.log(err));
+
+    const data = await res.data;
+
+
+    console.log(res.status);
+
+
+    if (res.status == 201) {
+      localStorage.setItem('token', data.token);
+			alert('Login successful')
+		} else {
+			alert('Please check your username and password')
+		}
+
+
+    return data;
+  }
+
+  const handleChange = (e) => {
+    setinputs(prev => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+    console.log(e.target.name,"value", e.target.value);
+  }
+
+  
+    return (
+        <StyledEngineProvider injectFirst>
       <Grid container  className="ConBig" component="main" sx={{ height: '100vh' }}>
         
         <Grid item xs={12} sm={8} md={6.5} component={Paper} elevation={6} square>
@@ -95,19 +133,21 @@ export default function SignInSide()  {
             <Typography className='login'  component="h2" variant="h5">
             Login into your account
             </Typography>
-            
-            <Box component="form" className='boxForm' noValidate onSubmit={{loginUser}} sx={{ mt: 6 }}>
+
+            <Box  className='boxForm'  sx={{ mt: 6 }}>
+              <form onSubmit={handleSubmit} >
+
               <div className="log">
               <TextField
                 margin="normal"
                 required
                 style ={{width: '100%'}}
-                id="email"
-                value={email}
-					      onChange={(e) => setEmail(e.target.value)}
-                label="Email Address"
-                name="email"
-                autoComplete="email"
+                id="username"
+                value={inputs.username}
+					      onChange={handleChange}
+                label="Username"
+                name="username"
+                autoComplete="username"
                 autoFocus
               />
               </div>
@@ -118,8 +158,8 @@ export default function SignInSide()  {
                 margin="normal"
                 required
                 style ={{width: '100%'}}
-                value={password}
-					      onChange={(e) => setPassword(e.target.value)}
+                value={inputs.password}
+					      onChange={handleChange}
                 name="password"
                 label="Password"
                 type="password"
@@ -127,18 +167,7 @@ export default function SignInSide()  {
                 autoComplete="current-password"
               />
 
-    {/* <input className="form"
-					value={username}
-					onChange={(e) => setName(e.target.value)}
-					type="text"
-					placeholder="username"
-				/> */}
-
-
               </div>
-              
-              
-              
                 <FormControlLabel
                   className="remember"
                   control={<Checkbox value="remember" color="primary" />}
@@ -146,12 +175,11 @@ export default function SignInSide()  {
                  
                 />
                 
-              
-
                <Button
                 className="button"
                 type="submit"
                 fullWidth
+                // onClick = {() => log()}
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
               >
@@ -168,9 +196,12 @@ export default function SignInSide()  {
                 </Grid>
                 
               </Grid>
-              
+              </form>
             </Box>
           
+
+            
+
           </Box>
       </div>
 
@@ -194,5 +225,7 @@ export default function SignInSide()  {
         />
       </Grid>
       </StyledEngineProvider>
-  );
+    );
 }
+
+export default AuthForm;

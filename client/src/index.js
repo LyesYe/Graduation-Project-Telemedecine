@@ -16,10 +16,10 @@ const theme = createTheme({
   ,
   palette: {
     primary: {
-       main: "#4ddd40a6" // This is an orange looking color
+       main: "#03B575" // This is an orange looking color
               },
     secondary: {
-       main: "#ffcc80" //Another orange-ish color
+       main: "#000000" //Another orange-ish color
                }
           },
 

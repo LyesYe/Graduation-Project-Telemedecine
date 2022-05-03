@@ -1,4 +1,32 @@
 const User = require("../models/user");
+const jwt = require("jsonwebtoken"),
+cookieParser = require("cookie-parser");
+
+
+// const insertToken2 =  (user , req,res) =>{
+        
+//     delete user.password;
+//     user.token = jwt.sign(
+//         {
+//             id: user._id,
+//             username: user.username,
+//         },
+//         process.env.SECRET_KEY,
+//         {
+//             expiresIn: "100h",
+//         }
+//     );
+//     res.cookie(String(user._id),user.token,{
+//         path:'/',
+//         expiresIn:new Date(Date.now()+1000 * 3000),
+//         httpOnly: true,
+//         sameSite: 'lax'
+//     })
+//     console.log(user)
+    
+// }
+
+
 module.exports = {
     createUser: async (req, res) => {
         const { email, username, first_Name, last_Name, password } = req.body;
@@ -15,11 +43,16 @@ module.exports = {
         try {
             const user = await User.findOne({ username });
             console.log(user)
-            if (!user) throw new Error("We didn't find any user with this username : " + username);
+            if (!user) throw new Error("We didn't find any user with this email : " + email);
             if (!(await user.comparePasswords(password)))
                 throw Error("Wrong Password,Try again !!");
-            
+
+        
             res.status(201).json(user.insertToken());
+            
+
+
+
         } catch (e) {
             res.json({ error: e.message });
         }

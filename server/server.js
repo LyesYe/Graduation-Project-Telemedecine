@@ -6,6 +6,8 @@ const
     userRouter = require("./routes/user"),
     authRouter = require("./routes/auth"),
     medRouter = require("./routes/medecin"),
+    //cookieParser = require("cookie-parser"),
+    
     port=3001;
 
 const cors = require('cors');
@@ -16,6 +18,7 @@ const cors = require('cors');
 require('dotenv').config({ path: '../.env' });
 
 app.use(express.json());
+//app.use(cookieParser());
 app.use("/auth",authRouter);
 app.use("/user", userRouter);
 app.use("/med", medRouter);

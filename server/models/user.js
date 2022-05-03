@@ -43,7 +43,7 @@ mongoose = require("mongoose"),
             next(e);
         }
     };
-    userSchema.methods.insertToken = function () {
+    userSchema.methods.insertToken = function (req,res) {
         let user = this.toObject();
         delete user.password;
         user.token = jwt.sign(
@@ -57,5 +57,6 @@ mongoose = require("mongoose"),
             }
         );
         return user;
+        
     };
     module.exports = mongoose.model("user", userSchema);
