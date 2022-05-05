@@ -16,13 +16,17 @@ import { useState , useEffect} from 'react'
 import { useNavigate } from 'react-router-dom'
 import './authForm.css';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { authActions } from '../../store';
 
 
 
 
 const AuthForm = () => {
 
-  const history = useNavigate()
+  const dispatch = useDispatch();
+
+  const history = useNavigate();
 
 	const [inputs, setinputs] = useState({
     username:"",
@@ -30,36 +34,6 @@ const AuthForm = () => {
   });
 
   
-  const log = async () => {
-
-    console.log("hi")
-
-    const response = await fetch('http://localhost:3001/auth/login', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify({
-				// username,
-				// password,
-			}),
-		})
-
-    const data = await response.json()
-		console.log(response.status);
-
-
-    if (response.status == 201) {
-			// setAuthToken(json.token);
-			// setUser_name(json.user.username);
-			// setUsername(json.user.username);
-			alert('Login successful')
-		} else {
-			alert('Please check your username and password')
-		}
-
-
-  };
 
   const handleSubmit = (e) => {
     
@@ -67,7 +41,7 @@ const AuthForm = () => {
     console.log(inputs);
     //send http request
 
-    sendRequest().then(() => history('/dashboard'));
+    sendRequest().then(() => dispatch(authActions.login()));
 
   };
 
@@ -80,13 +54,15 @@ const AuthForm = () => {
 
     const data = await res.data;
 
-
+    console.log(data.kind)
     console.log(res.status);
 
 
     if (res.status == 201) {
       localStorage.setItem('token', data.token);
+      // dispatch(authActions.type())
 			alert('Login successful')
+      history('/dashboard')
 		} else {
 			alert('Please check your username and password')
 		}

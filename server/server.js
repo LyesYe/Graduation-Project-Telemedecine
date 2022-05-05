@@ -6,6 +6,7 @@ const
     userRouter = require("./routes/user"),
     authRouter = require("./routes/auth"),
     medRouter = require("./routes/medecin"),
+    admRouter = require("./routes/admin"),
     //cookieParser = require("cookie-parser"),
     
     port=3001;
@@ -22,6 +23,7 @@ app.use(express.json());
 app.use("/auth",authRouter);
 app.use("/user", userRouter);
 app.use("/med", medRouter);
+app.use("/admin", admRouter);
 
 
 mongoose.set("debug", true); // in devolpment process

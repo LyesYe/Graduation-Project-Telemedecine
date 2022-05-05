@@ -10,12 +10,13 @@ const Register = () => {
 	const [first_Name, setFirst] = useState('')
 	const [last_Name, setLast] = useState('')
 	const [password, setPassword] = useState('')
+	const [secteur, setSecteur] = useState('')
 
 
 	async function registerUser(event) {
 		event.preventDefault()
 
-		const response = await fetch('http://localhost:3001/auth/signup', {
+		const response = await fetch('http://localhost:3001/admin/signup', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -26,13 +27,14 @@ const Register = () => {
 				first_Name,
 				last_Name,
 				password,
+				secteur
 			}),
 		})
 
 		const data = await response.json()
 		console.log(data);
 		console.log(data.status);
-		if (data) {
+		if (data.status == 201) {
 			history('/login');
 		}
 	}
@@ -77,10 +79,19 @@ const Register = () => {
 					placeholder="Password"
 				/>
 				<br />
+				<input
+					value={secteur}
+					onChange={(e) => setSecteur(e.target.value)}
+					type="text"
+					placeholder="secteur"
+				/>
+				<br />
 				<input type="submit" value="Register" />
 			</form>
 		</div>
 	);
 }
+
+
 
 export default Register;

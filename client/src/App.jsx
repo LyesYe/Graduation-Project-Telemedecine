@@ -12,11 +12,17 @@ import Home from './pages/Home/home.jsx'
 import SignInSide from './pages/Login/Home2.jsx'
 import AuthForm from './pages/Login/AuthForm.jsx'
 import { useState , useEffect} from 'react'
+import { useSelector } from 'react-redux';
 
 
 
 
 function App() {
+
+
+  const isloggedin = useSelector ((state) => state.isLoggedIn);
+  console.log(isloggedin)
+
 
   // const existingToken = localStorage.getItem("token") || "";
   // const existingUsername = localStorage.getItem("username") || "";
