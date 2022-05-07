@@ -50,11 +50,7 @@ const Dashboard = () => {
                         indicatorColor="secondary"
                     >
                      {isloggedin &&   <Tab to="/logout" LinkComponent={Link} label="logout" />}
-                        <Tab to="/login" LinkComponent={Link} label="login" />
-                        <Tab to="/login" LinkComponent={Link} label="login" />
-                        <Tab to="/login" LinkComponent={Link} label="login" />
-                        <Tab to="/login" LinkComponent={Link} label="login" />
-                        <Tab to="/login" LinkComponent={Link} label="login" />
+                        
                         
                     </Tabs>
                 </Box>

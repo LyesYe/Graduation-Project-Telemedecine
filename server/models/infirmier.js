@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const User = require("../models/user");
+const User = require("./user");
 options = { discriminatorKey: "kind" };
 
 infirmier = User.discriminator('infirmier',

@@ -46,6 +46,22 @@ module.exports = {
             res.json({ error: e.message });
         }
     },
+    updateInfo: async (req, res) => {
+        const { resultats, compteRendue, vaccin } = req.body,
+            id = req.params.id;
+        try {
+            if (id !== req.user._id)
+                throw new Error("You aren't allowed to edit other users profiles.");
+            const u = await User.findById(id);
+            u.resultats = resultats ? resultats : med.resultats;
+            u.compteRendue = compteRendue ? compteRendue : med.compteRendue;
+            u.vaccin = vaccin ? vaccin : med.vaccin;
+            await u.save();
+            res.status(201).send(u);
+        } catch (e) {
+            res.json({ error: e.message });
+        }
+    },
     deletePat : async (req, res) => {
         try {
             const id = req.params.id,

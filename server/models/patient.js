@@ -6,9 +6,9 @@ patient = User.discriminator('patient',
 
 
 new mongoose.Schema({
-    maladie: {
-        required: true,
-        type: String,
+    infoMedical: {
+        type: mongoose.Types.ObjectId,
+        ref: "infoMedical",
     },
     listMedecin:  [
         {

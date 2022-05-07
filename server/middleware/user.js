@@ -90,6 +90,7 @@ module.exports = {
             res.json({ error: e.message });
         }
     },
+
     userToAdmin: async (req, res) => {
         const id = req.params.id;
         try {

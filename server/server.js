@@ -7,6 +7,8 @@ const
     authRouter = require("./routes/auth"),
     medRouter = require("./routes/medecin"),
     admRouter = require("./routes/admin"),
+    patRouter = require("./routes/patient"),
+    infRouter = require("./routes/infirmier"),
     //cookieParser = require("cookie-parser"),
     
     port=3001;
@@ -24,6 +26,8 @@ app.use("/auth",authRouter);
 app.use("/user", userRouter);
 app.use("/med", medRouter);
 app.use("/admin", admRouter);
+app.use("/infirmier", infRouter);
+app.use("/patient", patRouter);
 
 
 mongoose.set("debug", true); // in devolpment process
