@@ -16,6 +16,13 @@ new mongoose.Schema({
             ref: "Infirmier",
         },
     ],
+    hospital:
+    {
+        type: mongoose.Types.ObjectId,
+        ref: "hospital",
+    },
+    
+    
     },options)
 );
 

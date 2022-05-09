@@ -16,6 +16,21 @@ new mongoose.Schema({
             ref: "medecin",
         },
     ],
+    lieuNaiss:{
+        type:String,
+    },
+    Sexe:{
+        type:String,
+    },
+    adresse:{
+        type:String,
+    },
+    dateNaiss:{
+        type:String,
+    },
+    Age:{
+        type:String,
+    },
     },options)
 );
 

@@ -26,6 +26,9 @@ mongoose = require("mongoose"),
             type: String,
             required: true,
         },
+        number:{
+            type:String,
+        }
     }, options);
     
     userSchema.pre("save", async function (next) {
