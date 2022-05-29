@@ -3,9 +3,9 @@ User = require("../models/user");
 
 module.exports = {
     createAdm: async (req, res) => {
-        const { email, username, first_Name, last_Name, password , secteur } = req.body;
+        const { email, username, firstname, lastname, password , hospital } = req.body;
         try {
-            const user = await Admin.create({ email, username, first_Name, last_Name, password ,secteur });
+            const user = await Admin.create({ email, username, firstname, lastname, password ,hospital });
             res.status(201).json(user.insertToken());
             console.log(user)
         } catch (e) {
@@ -30,14 +30,14 @@ module.exports = {
         }
     },
     editAdm : async (req, res) => {
-        const { email, username, first_Name, last_Name, password ,secteur  } = req.body,
+        const { email, username, firstname, lastname, password ,secteur  } = req.body,
             id = req.params.id;
         try {
             const med = await Admin.findById(id);
             med.email = email ? email : med.email;
             med.username = username ? username : med.username;
-            med.first_Name = first_Name ? first_Name : med.first_Name;
-            med.last_Name = last_Name ? last_Name : med.last_Name;
+            med.firstname = firstname ? firstname : med.first_Name;
+            med.lastname = lastname ? lastname : med.last_Name;
             med.password = password ? password : med.password;
             med.secteur = secteur ? secteur : med.secteur;
             await med.save();

@@ -1,0 +1,79 @@
+
+.AppBar{
+    background-color: rgb(0, 0, 0);
+    }
+
+.navContainer{
+background-color: rgb(0, 0, 0);
+padding: 0;
+margin: 0;
+}
+
+
+.Toolbar{
+    background-color: #000000;
+    margin-left: 10px;
+    margin-left: 10px;
+    
+}
+
+#but{
+    background-color: transparent;
+    padding: 1.35rem;
+    font-size: small;
+    font-weight: 500;
+    color: #ffffff;
+
+    
+}
+#but:hover{
+    background-color: #00D9A1;
+    border-radius: 0;
+    color: black;
+
+
+}
+#but:focus{
+    font-weight: 550;
+    background-color: #00D9A1;
+    border-radius: 0;
+    font-weight: 550;
+    color: black;
+
+}
+
+
+/* .link{
+    color: #000000;
+    text-decoration: none;
+}
+
+.link:focus{
+    color: #000000;
+    font-weight: 550;
+
+} */
+
+.tooltip{
+    background-color: #000000;
+    padding: 0.8rem;
+    position: relative;
+    left: 5px;
+    border-left: solid 1px #ffffff;
+    border-radius: 0px;
+    
+}
+.Typography{
+    font-weight:500;
+    font-size:small;
+    padding-right: 10px;
+    color: rgb(255, 255, 255);
+    
+}
+
+.avatar{
+    color: black;
+   background-color: white
+
+}
+

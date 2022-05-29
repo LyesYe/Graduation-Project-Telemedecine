@@ -3,9 +3,9 @@ User = require("../models/user");
 
 module.exports = {
     createInf: async (req, res) => {
-        const { email, username, first_Name, last_Name, password , grade } = req.body;
+        const { email, username, firstname, lastname, password , hospital } = req.body;
         try {
-            const user = await Infirmier.create({ email, username, first_Name, last_Name, password ,grade });
+            const user = await Infirmier.create({ email, username, firstname, lastname, password ,hospital });
             res.status(201).json(user.insertToken());
             console.log(user)
         } catch (e) {
@@ -30,14 +30,14 @@ module.exports = {
         }
     },
     editInf : async (req, res) => {
-        const { email, username, first_Name, last_Name, password ,maladie  } = req.body,
+        const { email, username, firstname, lastname, password ,maladie  } = req.body,
             id = req.params.id;
         try {
             const med = await Infirmier.findById(id);
             med.email = email ? email : med.email;
             med.username = username ? username : med.username;
-            med.first_Name = first_Name ? first_Name : med.first_Name;
-            med.last_Name = last_Name ? last_Name : med.last_Name;
+            med.firstname = firstname ? firstname : med.firstname;
+            med.lastname = lastname ? lastname : med.lastname;
             med.password = password ? password : med.password;
             med.grade = grade ? grade : med.grade;
             await med.save();

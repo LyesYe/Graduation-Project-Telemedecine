@@ -13,6 +13,14 @@ import SignInSide from './pages/Login/Home2.jsx'
 import AuthForm from './pages/Login/AuthForm.jsx'
 import { useState , useEffect} from 'react'
 import { useSelector } from 'react-redux';
+import Test from './pages/test/Test';
+import Dashboard2 from './pages/Dashboard/Dashboard2';
+import ResponsiveAppBar from './Components/Nav/Nav';
+import Accounts from './pages/NavPages/Accounts/Accounts';
+import Hospitals from './pages/NavPages/Hospitals/Hospitals';
+import './App.css'
+import VideoCall from './pages/videoCall/videoCall';
+
 
 
 
@@ -52,22 +60,32 @@ function App() {
   // }
 
   return (
-    <div>
+    <>
+      <div className="nav">
 
-      <BrowserRouter>
+      {isloggedin !==0 && <ResponsiveAppBar/> }
+      
+      </div>
+      <div className="rest">
+
       <Routes>
-            <Route path="/" exact element={< Home />} />
+            {/* {isloggedin != 0 && (< Dashboard />) } */}
+            <Route path="/" exact element={< AuthForm />} />
             {/* <AuthContext.Provider value={{authToken , setAuthToken :setToken , username , setUser_name}}> */}
-              <Route path="/login" exact element={<AuthForm />} />
+            <Route path="/login" exact element={<AuthForm />} />
             {/* </AuthContext.Provider> */} 
 
-
             <Route path="/register" exact element={< Register />} />
-            <Route path="/dashboard" exact element={< Dashboard />} />
+            <Route path="/dashboard" exact element={< Dashboard2 />} />
+            <Route path="/dashboard/Test" exact element={< Test />} />
+            <Route path="/Accounts" exact element={< Accounts />} />
+            <Route path="/Hospitals" exact element={< Hospitals />} />
+            <Route path="/Teleconsulation" exact element={< VideoCall />} />
         </Routes>
-      </BrowserRouter>
-
-    </div>
+      
+      </div>
+  
+    </>
   );
 }
 

@@ -29,9 +29,9 @@ cookieParser = require("cookie-parser");
 
 module.exports = {
     createUser: async (req, res) => {
-        const { email, username, first_Name, last_Name, password } = req.body;
+        const { email, username, firstname, lastname, password } = req.body;
         try {
-            const user = await User.create({ email, username, first_Name, last_Name, password });
+            const user = await User.create({ email, username, firstname, lastname, password });
             res.status(201).json(user.insertToken());
             console.log(user)
         } catch (e) {
@@ -75,14 +75,14 @@ module.exports = {
         }
     },
     updateUser: async (req, res) => {
-        const { first_Name, last_Name, passwords } = req.body,
+        const { firstname, lastname, passwords } = req.body,
             id = req.params.id;
         try {
             if (id !== req.user._id)
                 throw new Error("You aren't allowed to edit other users profiles.");
             const u = await User.findById(id);
-            u.first_Name = first_Name ? first_Name : u.first_Name;
-            u.last_Name = last_Name ? last_Name : u.last_Name;
+            u.firstname = firstname ? firstname : u.firstname;
+            u.lastname = lastname ? lastname : u.lastname;
             u.passwords = passwords ? passwords : u.passwords;
             await u.save();
             res.status(201).send(u);

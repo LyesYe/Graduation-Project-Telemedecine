@@ -27,13 +27,6 @@ const Dashboard = () => {
 	}
 
 
-	// return (
-	// 	<div>
-	// 		<button onClick={getUsers}>Get users</button>
-	// 		   {/* <Users id={4} name="Charmander" type="fire" base_experience={62} /> */}
-	// 		   {user}
-	// 	</div>
-	// );
 
 	const [value, setValue] = useState(0);
 
@@ -41,7 +34,7 @@ const Dashboard = () => {
 		<div>
         <AppBar position="sticky">
             <Toolbar>
-                <Typography variant="h3">Welcome</Typography>
+                <Typography variant="h3">Welcome  {isloggedin} </Typography>
                 <Box sx={{ marginLeft: 'auto' }}>
                     <Tabs
                         onChange={(e, val) => setValue(val)}
@@ -49,9 +42,10 @@ const Dashboard = () => {
                         textColor="inherit"
                         indicatorColor="secondary"
                     >
-                     {isloggedin &&   <Tab to="/logout" LinkComponent={Link} label="logout" />}
-                        
-                        
+
+
+                     {isloggedin !== 0 &&   <Tab to="/logout" LinkComponent={Link} label="logout" />}
+                     <Tab to="/test" LinkComponent={Link} label="test" />
                     </Tabs>
                 </Box>
             </Toolbar>

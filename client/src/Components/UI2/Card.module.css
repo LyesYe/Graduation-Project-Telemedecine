@@ -1,0 +1,22 @@
+.card {
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  border-radius: 5px;
+  padding: 0;
+  margin: 0;
+}
+
+.select label{
+  display: block;
+  font-weight: optional;
+  margin-bottom: 0.5rem;
+}
+
+.select input{
+  font: inherit;
+  display: block;
+  width: 90%;
+  border: 5px solid #ccc;
+  padding: 30px;
+}
+

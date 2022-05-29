@@ -9,17 +9,19 @@ const
     admRouter = require("./routes/admin"),
     patRouter = require("./routes/patient"),
     infRouter = require("./routes/infirmier"),
+    hospRouter = require("./routes/hospital"),
     //cookieParser = require("cookie-parser"),
     
     port=3001;
+const server = require("http").createServer(app);
 
 const cors = require('cors');
-    app.use(cors());
 
 
 //for .env file to work
 require('dotenv').config({ path: '../.env' });
 
+app.use(cors());
 app.use(express.json());
 //app.use(cookieParser());
 app.use("/auth",authRouter);
@@ -28,7 +30,42 @@ app.use("/med", medRouter);
 app.use("/admin", admRouter);
 app.use("/infirmier", infRouter);
 app.use("/patient", patRouter);
+app.use("/hospital", hospRouter);
 
+
+const io = require("socket.io")(server, {
+	cors: {
+		origin: "*",
+		methods: [ "GET", "POST" ]
+	}
+});
+
+app.get('/', (req, res) => {
+    res.send('Running');
+});
+
+
+
+//------------------------------------------------------------------------------------------
+
+io.on("connection", (socket) => {
+    socket.emit("me", socket.id); // this will give us our id on the front end side
+    console.log("jjjjjjjjjjjjjjjjjjj")
+    socket.on("disconnect", () => {
+        socket.broadcast.emit("callEnded")
+    });
+
+    socket.on("callUser", ({ userToCall, signalData, from, name }) => {
+        io.to(userToCall).emit("callUser", { signal: signalData, from, name });
+    });
+
+    socket.on("answerCall", (data) => {
+        io.to(data.to).emit("callAccepted", data.signal)
+    });
+});
+
+
+//------------------------------------------------------------------------------------------
 
 mongoose.set("debug", true); // in devolpment process
 mongoose
@@ -48,3 +85,5 @@ mongoose
     .catch((err) => {
         console.error(err);
     });
+
+

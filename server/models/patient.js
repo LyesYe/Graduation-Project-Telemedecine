@@ -10,12 +10,6 @@ new mongoose.Schema({
         type: mongoose.Types.ObjectId,
         ref: "infoMedical",
     },
-    listMedecin:  [
-        {
-            type: mongoose.Types.ObjectId,
-            ref: "medecin",
-        },
-    ],
     lieuNaiss:{
         type:String,
     },
@@ -33,5 +27,9 @@ new mongoose.Schema({
     },
     },options)
 );
+
+
+
+
 
 module.exports = patient;

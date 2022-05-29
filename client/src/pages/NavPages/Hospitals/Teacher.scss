@@ -1,0 +1,50 @@
+@import 'variables';
+
+.teacher-card {
+    height: 4rem;
+    width: 100%;
+    background-color: $light;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+    border-radius: $border-radius;
+    filter: $shadow;
+
+    .teacher-info-container {
+        margin-left: 4rem;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        height: 100%;
+        width: 80%;
+        align-items: center;
+    }
+
+    .teacher-buttons-container {
+        margin-right: 4rem;
+        button:not(:last-child) {
+            margin-right: 0.5rem;
+        }
+        button:last-child {
+            color: $secondary;
+        }
+        button {
+            display: none;
+            cursor: pointer;
+            border: none;
+            background: none;
+            font-size: 1rem;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    &:hover {
+        .teacher-buttons-container {
+            button {
+                display: inline-block;
+            }
+        }
+    }
+}

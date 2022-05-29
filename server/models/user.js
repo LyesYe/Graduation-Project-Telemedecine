@@ -14,23 +14,26 @@ mongoose = require("mongoose"),
             required: true,
             type: String,
         },
-        first_Name: {
+        firstname: {
             required: true,
             type: String,
         },
-        last_Name: {
+        lastname: {
             required: true,
             type: String,
         },
         password: {
             type: String,
-            required: true,
+            
         },
         number:{
             type:String,
         }
     }, options);
     
+
+
+
     userSchema.pre("save", async function (next) {
         try {
             if (this.isModified("password")) this.password = await bcrypt.hash(this.password, 13);

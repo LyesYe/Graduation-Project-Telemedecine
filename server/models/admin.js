@@ -7,9 +7,8 @@ admin = User.discriminator('admin',
 
 new mongoose.Schema({
     hospital:
-    {
-        type: mongoose.Types.ObjectId,
-        ref: "hospital",
+    {    
+        type: String,
     },
     },options)
 );

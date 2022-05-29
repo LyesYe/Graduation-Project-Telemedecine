@@ -3,9 +3,9 @@ User = require("../models/user");
 
 module.exports = {
     createMed: async (req, res) => {
-        const { email, username, first_Name, last_Name, password , specialite } = req.body;
+        const { email, username, firstname, lastname, password , specialite } = req.body;
         try {
-            const user = await Medecin.create({ email, username, first_Name, last_Name, password ,specialite });
+            const user = await Medecin.create({ email, username, firstname, lastname, password ,specialite });
             res.status(201).json(user.insertToken());
             console.log(user)
         } catch (e) {

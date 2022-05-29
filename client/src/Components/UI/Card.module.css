@@ -1,0 +1,19 @@
+.card {
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  border-radius: 10px;
+}
+
+.input label{
+  display: block;
+  font-weight: optional;
+  margin-bottom: 0.5rem;
+}
+
+.input input{
+  font: inherit;
+  display: block;
+  width: 90%;
+  border: 1px solid #ccc;
+  padding: 30px;
+}

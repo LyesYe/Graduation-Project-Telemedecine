@@ -18,6 +18,7 @@ import './authForm.css';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { authActions } from '../../store';
+import HealingIcon from '@mui/icons-material/Healing';
 
 
 
@@ -41,8 +42,7 @@ const AuthForm = () => {
     console.log(inputs);
     //send http request
 
-    sendRequest().then(() => dispatch(authActions.login()));
-
+    const data = sendRequest();
   };
 
 
@@ -56,11 +56,33 @@ const AuthForm = () => {
 
     console.log(data.kind)
     console.log(res.status);
+    console.log(data);
 
 
     if (res.status == 201) {
       localStorage.setItem('token', data.token);
+      localStorage.setItem('id', data._id);
+      localStorage.setItem('username', data.username);
       // dispatch(authActions.type())
+
+      switch(data.kind) {
+        case "admin":
+          dispatch(authActions.loginAdmin())
+          break;
+        case "medecin":
+          dispatch(authActions.loginMedecin())
+          break;
+        case "infirmier":
+          dispatch(authActions.loginInfirmier())
+          break;
+        case "patient":
+          dispatch(authActions.loginPatient())
+          break;
+        default:
+        console.log("faulttttt")
+      }
+
+
 			alert('Login successful')
       history('/dashboard')
 		} else {
@@ -89,7 +111,8 @@ const AuthForm = () => {
 
       <div className="flex">
       <div className="up">
-            <h2>Logo</h2>
+      <h2>MyDecine</h2>
+      <HealingIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
           </div>
 
           <Box

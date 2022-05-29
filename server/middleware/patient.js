@@ -3,9 +3,9 @@ User = require("../models/user");
 
 module.exports = {
     createPat: async (req, res) => {
-        const { email, username, first_Name, last_Name, password , maladie } = req.body;
+        const { email, username, firstname, lastname, password , lieuNaiss ,  Sexe , adresse  , dateNaiss  } = req.body;
         try {
-            const user = await Patient.create({ email, username, first_Name, last_Name, password ,maladie });
+            const user = await Patient.create({ email, username, firstname, lastname, password , lieuNaiss ,  Sexe , adresse  , dateNaiss });
             res.status(201).json(user.insertToken());
             console.log(user)
         } catch (e) {
@@ -36,8 +36,8 @@ module.exports = {
             const med = await Patient.findById(id);
             med.email = email ? email : med.email;
             med.username = username ? username : med.username;
-            med.first_Name = first_Name ? first_Name : med.first_Name;
-            med.last_Name = last_Name ? last_Name : med.last_Name;
+            med.firstname = firstname ? firstname : med.firstname;
+            med.lastname = lastname ? lastname : med.lastname;
             med.password = password ? password : med.password;
             med.maladie = maladie ? maladie : med.maladie;
             await med.save();
