@@ -68,15 +68,19 @@ const AuthForm = () => {
       switch(data.kind) {
         case "admin":
           dispatch(authActions.loginAdmin())
+          localStorage.setItem('logi', 1);
           break;
         case "medecin":
           dispatch(authActions.loginMedecin())
+          localStorage.setItem('logi', 2);
           break;
         case "infirmier":
           dispatch(authActions.loginInfirmier())
+          localStorage.setItem('logi', 3);
           break;
         case "patient":
           dispatch(authActions.loginPatient())
+          localStorage.setItem('logi', 4);
           break;
         default:
         console.log("faulttttt")
@@ -85,6 +89,7 @@ const AuthForm = () => {
 
 			alert('Login successful')
       history('/dashboard')
+      window.location.reload(false);
 		} else {
 			alert('Please check your username and password')
 		}

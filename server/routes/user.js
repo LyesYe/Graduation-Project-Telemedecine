@@ -3,6 +3,6 @@ const express = require("express"),
     { showAllUsers ,showUser, updateUser } = require("../middleware/user");
 router = express.Router();
 
-router.route("/").get(isLoggedIn, showAllUsers);
+router.route("/").get(showAllUsers);
 router.route("/:id").get(showUser).put(isLoggedIn, updateUser);
 module.exports = router;

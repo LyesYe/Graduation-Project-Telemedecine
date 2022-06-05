@@ -1,0 +1,17 @@
+{
+    "id": 10,
+    "nom": "Maths",
+    "etudiants":[
+        {
+        "nom": "Khoumeri",
+        "prenom": "Lyes",
+        "email":"email1@gmail.com"
+        },
+        {
+        "nom": "Nass",
+        "prenom": "Manel",
+        "email":"email2@gmail.com"
+        }
+
+    ]
+}

@@ -1,11 +1,16 @@
 const Medecin = require("../models/medecin"),
+ Hopital = require("../models/hopital"),
+ Specialite = require("../models/specialite"),
 User = require("../models/user");
 
 module.exports = {
     createMed: async (req, res) => {
-        const { email, username, firstname, lastname, password , specialite } = req.body;
+        const { email, username, firstname, lastname, password , specialiteA , hopitalA } = req.body;
         try {
-            const user = await Medecin.create({ email, username, firstname, lastname, password ,specialite });
+            const hopital = await Hopital.findOne({name:hopitalA});
+            const specialite = await Specialite.findOne({name:specialiteA});
+
+            const user = await Medecin.create({ email, username, firstname, lastname, password ,specialite,hopital  });
             res.status(201).json(user.insertToken());
             console.log(user)
         } catch (e) {

@@ -27,18 +27,19 @@ var pages ;
 const ResponsiveAppBar = () => {
 
     const isloggedin = useSelector ((state) => state.isLoggedIn);
-	console.log(isloggedin)
+	console.log("nav"+isloggedin)
+	console.log("nav -- "+localStorage.getItem("logi"))
     
     
 
-        switch (isloggedin) {
-            case 1: pages = pagesAdmin;
+        switch (localStorage.getItem("logi")) {
+            case "1": pages = pagesAdmin;
                 break;
-            case 2: pages = pagesMedecin;
+            case "2": pages = pagesMedecin;
                 break;
-            case 3: pages = pagesInfirmier;
+            case "3": pages = pagesInfirmier;
                 break;
-            case 4: pages = pagesPatient;
+            case "4": pages = pagesPatient;
                 break;
             default:
                 break;
@@ -217,7 +218,7 @@ const ResponsiveAppBar = () => {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                <MenuItem key={setting}  component={Link} to={`/${setting}`}>
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}

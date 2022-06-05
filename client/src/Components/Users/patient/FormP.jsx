@@ -4,58 +4,61 @@ import FormInput from "../FormInput";
 import { useState } from "react";
 import Button from "../../UI2/Button";
 import axios from "axios";
-import './FormP'
+import "./FormP";
+import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 function FormP() {
   const [values, setValues] = useState({
     lastname: "",
     firstname: "",
     username: "",
     email: "",
-    wilaya: "",
-    hospital: "",
+    lieuNaiss: "",
+    Sexe: "",
+    adresse: "",
+    dateNaiss: "",
+    numero: "",
+    password: "",
   });
 
-
   const sendRequest = async () => {
-    const newP = {password : "hello"};
+    const newP = { password: "13102001" };
     setValues(newP);
-    const res = await axios.post('http://localhost:3001/patient/signup',{
-      email: values.email,
-      username: values.username,
-      firstname: values.firstname,
-      lastname: values.lastname,
-      password: values.password,
-      hospital: values.hospital,
-      
-    }).catch(err => console.log(err));
+    const res = await axios
+      .post("http://localhost:3001/patient/", {
+        lastname: values.lastname,
+        firstname: values.firstname,
+        username: values.username,
+        email: values.email,
+        lieuNaiss: values.lieuNaiss,
+        Sexe: values.Sexe,
+        adresse: values.adresse,
+        dateNaiss: values.dateNaiss,
+        numero: values.numero,
+        password: values.password,
+      })
+      .catch((err) => console.log(err));
 
     const data = await res.data;
 
-    console.log(data.kind)
-    console.log(res.status);
+    console.log(data.kind);
+    // console.log(res.status);
     console.log(res);
 
-
     if (res.status == 201) {
-      
-
-      alert('creation success')
-      
+      alert("creation success");
     } else {
-      alert('Please check probs')
+      alert("Please check probs");
     }
 
-
     return data;
-  }
-
+  };
 
   const inputs = [
     {
       id: 1,
       name: "lastname",
       //value: { enteredLastName },
-      placeholder: "Last name",
+      placeholder: "Nom",
       errorMessage: "le nom doit etre entre 3 et 16 caractéres",
       required: true,
       type: "text",
@@ -68,7 +71,7 @@ function FormP() {
       id: 2,
       name: "firstname",
       //value: { enteredFirstName },
-      placeholder: "First name",
+      placeholder: "Prenom",
       errorMessage: "le nom doit etre entre 3 et 16 caractéres",
       required: true,
       type: "text",
@@ -105,7 +108,7 @@ function FormP() {
     },
     {
       id: 5,
-      name: "dateN",
+      name: "dateNaiss",
       placeholder: "Date de naissance",
       //value: { ent"",eredWilaya },
       required: true,
@@ -116,13 +119,13 @@ function FormP() {
     },
     {
       id: 6,
-      name: "NaissL",
+      name: "lieuNaiss",
       placeholder: "Lieu de Naissance",
       //value: { ent"",eredHospital },
       required: true,
       type: "text",
       // onChange: { hospitalChangeHandler },
-      pattern: "^[A-Za-z]{3,16}$",
+      // pattern: "^[A-Za-z]{3,16}$",
       errorMessage: "Entrez un hopital dans votre région",
       //onBlur: { focusHandler },
     },
@@ -134,7 +137,7 @@ function FormP() {
       required: true,
       type: "text",
       // onChange: { hospitalChangeHandler },
-      pattern: "^[A-Za-z]{3,16}$",
+      // pattern: "^[A-Za-z]{3,16}$",
       errorMessage: "Entrez une adresse valide",
       //onBlur: { focusHandler },
     },
@@ -156,24 +159,29 @@ function FormP() {
 
   function onChange(event) {
     setValues({ ...values, [event.target.name]: event.target.value });
+    console.log(values);
   }
 
   function addUserHandler(event) {
     event.preventDefault();
-
+    console.log("submit");
     console.log(inputs);
     sendRequest();
   }
 
-  console.log(values);
+  // var makeItem = function (X) {
+  //   return <option>{X}</option>;
+  // };
 
-  var makeItem = function (X) {
-    return <option>{X}</option>;
+  const handleChange = (event) => {
+    // console.log('1st'+event.target.value)
+    setValues({ ...values, Sexe: event.target.value });
+    // console.log(values)
   };
 
   return (
-    <Card className={classes.input} >
-      <form onSubmit={addUserHandler}>
+    <Card className={classes.input}>
+      <form className={"formo"} onSubmit={addUserHandler}>
         {inputs.map((input) => (
           <FormInput
             key={input.id}
@@ -182,8 +190,29 @@ function FormP() {
             onChange={onChange}
           />
         ))}
-        <select>{selectsGender.map(makeItem)}</select>
-        <Button id="create" type="submit">Ajouter Patient</Button>
+
+        <FormControl>
+          <InputLabel id="demo-simple-select-label4">Gender</InputLabel>
+          <Select
+          className="selecto"
+            labelId="demo-simple-select-label4"
+            id="select4"
+            // value={value}
+            label="gender"
+            onChange={handleChange}
+            defaultValue=''
+          >
+            {selectsGender.map((element) => (
+              <MenuItem value={element}>{element}</MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+
+        {/* <select>{selectsGender.map(makeItem)}</select> */}
+
+        <Button id="create" type="submit">
+          Create
+        </Button>
       </form>
     </Card>
   );

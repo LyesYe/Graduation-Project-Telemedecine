@@ -1,0 +1,19 @@
+Classe
+{
+    "id": 10,
+    "nom": "dupont",
+    "etudiants": [
+        96,12,420,69
+    ]
+    
+}
+etudiant
+{
+    "id": 69,
+    "nom": "Khoumeri",
+    "prenom": "Lyes",
+    "email":"me@palo-it.com",
+}
+
+
+

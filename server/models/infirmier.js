@@ -12,10 +12,10 @@ new mongoose.Schema({
             ref: "infirmier",
         },
     ],
-    hospital:  
+    hopital:  
     {
         type: mongoose.Types.ObjectId,
-        ref: "hospital",
+        ref: "hopital",
     },
     },options)
 );

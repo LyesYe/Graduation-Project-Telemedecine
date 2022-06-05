@@ -1,0 +1,13 @@
+{
+    'id': 10,
+    'nom': 'dupont',
+    'prenom': 'david',
+    'email':'me@palo-it.com',
+    'adresse':
+        {
+        'pseudo':'10 rue du test',
+        'ville':'paris',
+        'pays':'France',
+        'code postal':75009
+        }    
+}

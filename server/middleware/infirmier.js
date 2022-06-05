@@ -1,11 +1,13 @@
 const Infirmier = require("../models/infirmier"),
+Hopital = require("../models/hopital"),
 User = require("../models/user");
 
 module.exports = {
     createInf: async (req, res) => {
-        const { email, username, firstname, lastname, password , hospital } = req.body;
+        const { email, username, firstname, lastname, password , hopitalA } = req.body;
         try {
-            const user = await Infirmier.create({ email, username, firstname, lastname, password ,hospital });
+            const hopital = await Hopital.findOne({name:hopitalA});
+            const user = await Infirmier.create({ email, username, firstname, lastname, password ,hopital });
             res.status(201).json(user.insertToken());
             console.log(user)
         } catch (e) {

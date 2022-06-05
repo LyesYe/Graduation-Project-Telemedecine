@@ -52,14 +52,14 @@ useEffect(() => {
           </Grid> 
         </Paper>
       
-      {/* {callAccepted && !callEnded && ( */}
+      {callAccepted && !callEnded && (
         <Paper className='paper'>
           <Grid item xs={12} md={6}>
             <Typography variant="h5" gutterBottom>{call.name || 'Name'}</Typography>
             <video playsInline ref={userVideo} autoPlay className='video' />
           </Grid>
         </Paper>
-      {/* )} */}
+       )} 
     </Grid>
   );
 };

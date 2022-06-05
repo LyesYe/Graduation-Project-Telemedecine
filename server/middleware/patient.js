@@ -3,7 +3,7 @@ User = require("../models/user");
 
 module.exports = {
     createPat: async (req, res) => {
-        const { email, username, firstname, lastname, password , lieuNaiss ,  Sexe , adresse  , dateNaiss  } = req.body;
+        const { email, username, firstname, lastname, password , lieuNaiss ,  Sexe , adresse  , dateNaiss   } = req.body;
         try {
             const user = await Patient.create({ email, username, firstname, lastname, password , lieuNaiss ,  Sexe , adresse  , dateNaiss });
             res.status(201).json(user.insertToken());

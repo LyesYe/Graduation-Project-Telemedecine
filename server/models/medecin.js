@@ -7,8 +7,8 @@ medecin = User.discriminator('medecin',
 
 new mongoose.Schema({
     specialite: {
-        required: true,
-        type: String,
+        type: mongoose.Types.ObjectId,
+        ref: "specialite",
     },
     listInfirmier:  [
         {
@@ -16,12 +16,11 @@ new mongoose.Schema({
             ref: "Infirmier",
         },
     ],
-    hospital:
+    hopital:
     {
-        
-        type: String,
+        type: mongoose.Types.ObjectId,
+        ref: "hopital",
     },
-    
     
     },options)
 );

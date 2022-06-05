@@ -1,0 +1,24 @@
+#container69{
+    display: flex;
+    flex-direction: column;
+align-items: center;
+    /* background-color: aqua; */
+    height: 100%;
+    width: 100%;
+}
+
+#title{
+    height: 10rem;
+    width: 100%;
+    font-size:3rem;
+    font-weight:500;
+    padding: 0;
+    margin: 0;
+    /* border: solid 1px; */
+    /* background-color: blue; */
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+
+}

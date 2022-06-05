@@ -10,6 +10,8 @@ const
     patRouter = require("./routes/patient"),
     infRouter = require("./routes/infirmier"),
     hospRouter = require("./routes/hospital"),
+    specRouter = require("./routes/specialite"),
+    sceanceRouter = require("./routes/sceance"),
     //cookieParser = require("cookie-parser"),
     
     port=3001;
@@ -30,7 +32,9 @@ app.use("/med", medRouter);
 app.use("/admin", admRouter);
 app.use("/infirmier", infRouter);
 app.use("/patient", patRouter);
-app.use("/hospital", hospRouter);
+app.use("/hopital", hospRouter);
+app.use("/specialite", specRouter);
+app.use("/sceance", sceanceRouter);
 
 
 const io = require("socket.io")(server, {

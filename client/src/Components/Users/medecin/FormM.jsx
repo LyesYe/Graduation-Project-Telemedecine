@@ -1,60 +1,61 @@
 import Card from "../../UI/Card";
 import classes from "../FormInput.module.css";
 import FormInput from "../FormInput";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "../../UI2/Button";
 import axios from "axios";
+import "./FormM.css";
+import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 
-function FormM() {
+function FormM(props) {
   const [values, setValues] = useState({
     lastname: "",
     firstname: "",
     username: "",
     email: "",
-    wilaya: "",
-    hospital: "",
+    password: "",
+    specialiteA: "",
+    hopitalA: "",
   });
 
+  const [hop, sethop] = useState([]);
+  const [sop, setsop] = useState([]);
 
   const sendRequest = async () => {
-    const newP = {password : "hello"};
+    const newP = { password: "13102001" };
     setValues(newP);
-    const res = await axios.post('http://localhost:3001/medecin/signup',{
-      email: values.email,
-      username: values.username,
-      firstname: values.firstname,
-      lastname: values.lastname,
-      password: values.password,
-      hospital: values.hospital,
-      
-    }).catch(err => console.log(err));
+    const res = await axios
+      .post("http://localhost:3001/med/", {
+        email: values.email,
+        username: values.username,
+        firstname: values.firstname,
+        lastname: values.lastname,
+        password: values.password,
+        specialiteA: values.specialiteA,
+        hopitalA: values.hopitalA,
+      })
+      .catch((err) => console.log(err));
 
     const data = await res.data;
 
-    console.log(data.kind)
-    console.log(res.status);
+    console.log(data.kind);
+    // console.log(res.status);
     console.log(res);
 
-
     if (res.status == 201) {
-      
-
-      alert('creation success')
-      
+      alert("creation success");
     } else {
-      alert('Please check probs')
+      alert("Please check probs");
     }
 
-
     return data;
-  }
-
+  };
 
   const inputs = [
     {
       id: 1,
       name: "lastname",
-      placeholder: "Last name",
+      placeholder: "Nom",
       errorMessage: "le nom doit etre entre 3 et 16 caractéres",
       required: true,
       type: "text",
@@ -63,8 +64,8 @@ function FormM() {
     {
       id: 2,
       name: "firstname",
-      placeholder: "First name",
-      errorMessage: "le nom doit etre entre 3 et 16 caractéres",
+      placeholder: "Prenom",
+      errorMessage: "le Prenom doit etre entre 3 et 16 caractéres",
       required: true,
       type: "text",
       pattern: "^[A-Za-z]{3,16}$",
@@ -87,53 +88,49 @@ function FormM() {
       type: "email",
     },
     {
-      id: 5,
-      name: "wilaya",
-      placeholder: "Wilaya",
-      required: true,
-    },
-    {
-      id: 6,
-      name: "hospital",
-      placeholder: "Hospital",
-      required: true,
-      type: "text",
-      pattern: "^[A-Za-z]{3,16}$",
-      errorMessage: "Entrez un hopital dans votre région",
-    },
-    {
-      id: 7,
-      name: "Specialité",
-      placeholder: "Specialité",
-      required: true,
-      type: "text",
-      
-    },
-    {
       id: 8,
       name: "Number",
       placeholder: "Numéro",
       type: "number",
-      pattern: "^\d{10}$",
-      required:'true',
+      pattern: "^d{10}$",
+      required: "true",
     },
   ];
 
   function onChange(event) {
     setValues({ ...values, [event.target.name]: event.target.value });
+    console.log(values);
   }
 
   function addUserHandler(event) {
     event.preventDefault();
-
+    console.log("submit");
     console.log(inputs);
     sendRequest();
   }
 
+  const handleChange = (event) => {
+    // console.log('1st'+event.target.value)
+    setValues({ ...values, hopitalA: event.target.value });
+    // console.log(values)
+  };
+
+  const handleChange2 = (event) => {
+    // console.log('1st'+event.target.value)
+    setValues({ ...values, specialiteA: event.target.value });
+    // console.log(values)
+  };
+
+
+  useEffect(() => {
+    sethop(localStorage.getItem('hop').split(","))
+    setsop(localStorage.getItem('sop').split(","))
+  }, []);
+
   console.log(values);
   return (
     <Card className={classes.input}>
-      <form onSubmit={addUserHandler}>
+      <form className={"formo"} onSubmit={addUserHandler}>
         {inputs.map((input) => (
           <FormInput
             key={input.id}
@@ -142,10 +139,45 @@ function FormM() {
             onChange={onChange}
           />
         ))}
-        <Button type="submit">Ajouter Medecin</Button>
+
+        <FormControl>
+          <InputLabel id="demo-simple-select-label">Hopital</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="selectM"
+            // value={value}
+            label="hopM"
+            onChange={handleChange}
+            defaultValue=''
+          >
+            {hop.map((element) => (
+              <MenuItem value={element}>{element}</MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+
+
+        <FormControl>
+          <InputLabel id="demo-simple-select-label2">Specialite</InputLabel>
+          <Select
+            labelId="demo-simple-select-label2"
+            id="select2"
+            // value={value}
+            label="spec"
+            onChange={handleChange2}
+            defaultValue=''
+          >
+            {sop.map((element) => (
+              <MenuItem value={element}>{element}</MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+
+        <Button type="submit">Create</Button>
       </form>
     </Card>
   );
 }
 
 export default FormM;
+
