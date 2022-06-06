@@ -1,0 +1,9 @@
+.left{
+    display: flex;
+    justify-content: center;
+    /* height: 5rem; */
+}
+
+.side{
+    height: 81.5vh;
+}

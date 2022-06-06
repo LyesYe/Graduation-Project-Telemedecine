@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import HopCard from "./HopCard";
 import "./Hopo.css";
+import axios from 'axios'
 
-const [hopitales, sethopitales] = useState([]);
+
+const Hopo = () => {
+
+  const [hopitales, sethopitales] = useState([]);
 
 useEffect(() => {
   axios
@@ -17,17 +21,19 @@ useEffect(() => {
         "hop",
         res.data.map((el) => el.name)
       );
-      sethopitales(res.data.map((el) => el.name));
+      sethopitales(res.data.map((el) => el));
     });
 }, []);
 
-const Hopo = () => {
+console.log('object');
+console.log(hopitales);
+
   return (
     <div id="hoCont">
       <div id="hoptxt">Liste des Hopiteaux</div>
       <div id="hopcard">
         {hopitales.map((el) => (
-          <HopCard name={el.} />
+          <HopCard name={el.name} ad={el.adress} />
         ))}
       </div>
     </div>

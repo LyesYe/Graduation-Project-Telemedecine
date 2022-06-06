@@ -68,8 +68,13 @@ const App = () => {
 
 
   const sendRequest = async () => {
-    // const newP = { password: "13102001" };
-    // setValues(newP);
+    const newP = { time: "13h" };
+    setValues( {...values, newP});
+    const newC = { code: "abcde" };
+    setValues({ ...values, newC});
+    const newU = { username: localStorage.getItem('username') };
+    setValues({ ...values, newU});
+    
     const res = await axios
       .post("http://localhost:3001/sceance/", {
         time: values.time,
@@ -127,6 +132,19 @@ const App = () => {
     event.preventDefault();
     console.log("submit");
     // console.log(inputs);
+
+    axios
+      .get("http://localhost:3001/med/getResp", {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+        },
+      })
+      .then((res) => {
+        console.log(res.data);
+
+        setValues({ ...values, medecin22:   ssd});
+        setspecialites(localStorage.getItem("sop").split(","));
+      });
     
     sendRequest();
   }

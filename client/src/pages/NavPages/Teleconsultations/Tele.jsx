@@ -4,7 +4,7 @@ import App from '../../videoCall/videoCall'
 const Tele = () => {
     return (
         <div>
-            <App />
+            <App/>
         </div>
     );
 }

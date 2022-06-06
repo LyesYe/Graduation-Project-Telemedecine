@@ -58,7 +58,7 @@ function App() {
             <Route path="/dashboard/Test" exact element={<Test />} />
             <Route path="/Accounts" exact element={<Accounts />} />
             <Route path="/Hospitals" exact element={<Hospitals />} />
-            <Route path="/Teleconsulation" exact element={<VideoCall />} />
+            <Route path="/Teleconsulation" exact element={<Tele />} />
             <Route path="/Teleconsultations" exact element={<Tele />} />
             <Route path="/Logout" exact element={<Logout />} />
             {/* <Route path="/Hospitals" exact element={<Hospitals />} /> */}

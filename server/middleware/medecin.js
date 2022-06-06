@@ -5,12 +5,12 @@ User = require("../models/user");
 
 module.exports = {
     createMed: async (req, res) => {
-        const { email, username, firstname, lastname, password , specialiteA , hopitalA } = req.body;
+        const { email, username, firstname, lastname, password , specialiteA , hopitalA ,isRep} = req.body;
         try {
             const hopital = await Hopital.findOne({name:hopitalA});
             const specialite = await Specialite.findOne({name:specialiteA});
-
-            const user = await Medecin.create({ email, username, firstname, lastname, password ,specialite,hopital  });
+            const isResp ='0';
+            const user = await Medecin.create({ email, username, firstname, lastname, password ,specialite,hopital ,isResp});
             res.status(201).json(user.insertToken());
             console.log(user)
         } catch (e) {
@@ -55,8 +55,34 @@ module.exports = {
         try {
             const id = req.params.id,
                 med = await Medecin.findById(id);
-            await med.remove();
-            res.json({ deleted: "successfully" });
+                med.isResp = isResp ? isResp : med.isResp;
+            
+        } catch (e) {
+            res.json({ error: e.message });
+        }
+    },
+    toResp : async (req, res) => {
+        try {
+            const {  username  } = req.body;
+
+            med = await Medecin.findOne({username:username});
+            console.log(med)
+            med.isResp = '1';
+            await med.save();
+            res.json({ deleted: "changed to resp" });
+        } catch (e) {
+            res.json({ error: e.message });
+        }
+    },
+    getResp : async (req, res) => {
+        try {
+            const {  specialite  } = req.body;
+            const sep = await Specialite.findOne({name:specialite});
+            med = await Medecin.find({specialite:sep._id , isResp:'1'});
+            console.log(med);
+
+            await med.save();
+            res.json({ deleted: "changed to resp" });
         } catch (e) {
             res.json({ error: e.message });
         }

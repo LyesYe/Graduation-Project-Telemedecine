@@ -14,6 +14,7 @@ import FormI from "../../../Components/Users/infirmier/FormI";
 import FormM from "../../../Components/Users/medecin/FormM";
 import FormP from "../../../Components/Users/patient/FormP";
 import Test from "../../test/Test";
+import Aso from "./Aso/Aso";
 import Hopo from "./Hopo/Hopo";
 
 import "./Hospitals.css";
@@ -66,16 +67,16 @@ const Hospitals = (props) => {
       <div className="side">
         <Button id="butt" onClick={() => setComponents("first")}>
           {" "}
-          Creation
+          Consulter Les Hopiteaux
         </Button>
         <Button id="butt" onClick={() => setComponents("second")}>
           {" "}
-          Gestion
+          Assign Responsables
         </Button>
       </div>
       <div className="left">
         {components === "first" && <Hopo />}
-        {components === "second" && <Hopo />}
+        {components === "second" && <Aso />}
         {/* {components === "third" && (
           <Creation hopArray={hopitales} sopArray={specialites} />
         )}

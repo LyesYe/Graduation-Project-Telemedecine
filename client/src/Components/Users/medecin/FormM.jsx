@@ -24,6 +24,7 @@ function FormM(props) {
   const sendRequest = async () => {
     const newP = { password: "13102001" };
     setValues(newP);
+    const isResp = '0';
     const res = await axios
       .post("http://localhost:3001/med/", {
         email: values.email,
@@ -33,6 +34,7 @@ function FormM(props) {
         password: values.password,
         specialiteA: values.specialiteA,
         hopitalA: values.hopitalA,
+        isResp:isResp,
       })
       .catch((err) => console.log(err));
 
