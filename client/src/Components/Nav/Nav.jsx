@@ -19,10 +19,10 @@ import './Nav.css'
 
 
 const pagesAdmin = ['Accounts', 'Hospitals', 'Teleconsulation'];
-const pagesMedecin = ['Patients', 'Teleconsultations', 'here'];
+const pagesMedecin = ['Patients', 'Teleconsultations', 'MesRequetes'];
 const pagesInfirmier = ['Patients', 'Teleconsultation', 'here'];
 const pagesPatient = ['mssed', 'cin', 'here'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const settings = ['Profile', 'Logout'];
 var pages ; 
 const ResponsiveAppBar = () => {
 

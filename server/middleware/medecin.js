@@ -76,13 +76,16 @@ module.exports = {
     },
     getResp : async (req, res) => {
         try {
-            const {  specialite  } = req.body;
-            const sep = await Specialite.findOne({name:specialite});
-            med = await Medecin.find({specialite:sep._id , isResp:'1'});
-            console.log(med);
+            
+            const specialite = req.params.id;
+            // console.log("spec"+specialite)
+            const sepo = await Specialite.findOne({name:specialite});
+            console.log("sepo"+sepo)
+            const med = await Medecin.find({specialite:sepo._id , isResp:'1'});
+            console.log("med"+med);
 
-            await med.save();
-            res.json({ deleted: "changed to resp" });
+            // await med.save();
+            res.json(med);
         } catch (e) {
             res.json({ error: e.message });
         }

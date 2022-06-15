@@ -1,32 +1,30 @@
 import React, { useEffect, useState } from "react";
 import HopCard from "./HopCard";
 import "./Hopo.css";
-import axios from 'axios'
-
+import axios from "axios";
 
 const Hopo = () => {
-
   const [hopitales, sethopitales] = useState([]);
 
-useEffect(() => {
-  axios
-    .get("http://localhost:3001/hopital/all", {
-      headers: {
-        Authorization: "Bearer " + localStorage.getItem("token"),
-      },
-    })
-    .then((res) => {
-      console.log(res.data);
-      localStorage.setItem(
-        "hop",
-        res.data.map((el) => el.name)
-      );
-      sethopitales(res.data.map((el) => el));
-    });
-}, []);
+  useEffect(() => {
+    axios
+      .get("http://localhost:3001/hopital/all", {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+        },
+      })
+      .then((res) => {
+        console.log(res.data);
+        localStorage.setItem(
+          "hop",
+          res.data.map((el) => el.name)
+        );
+        sethopitales(res.data.map((el) => el));
+      });
+  }, []);
 
-console.log('object');
-console.log(hopitales);
+  console.log("object");
+  console.log(hopitales);
 
   return (
     <div id="hoCont">

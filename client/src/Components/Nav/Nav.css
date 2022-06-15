@@ -36,7 +36,7 @@ margin: 0;
 }
 #but:focus{
     font-weight: 550;
-    /* background-color: #00D9A1; */
+    background-color: #00D9A1;
     border-radius: 0;
     font-weight: 550;
 

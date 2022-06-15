@@ -1,39 +1,78 @@
-#telecontainer{
-display: flex;
-flex-direction: column;
-justify-content: center;
-width: 100%;
-height: 100%;
-/* background-color: blue; */
-align-items: center;
+#telecontainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  /* background-color: blue; */
+  align-items: center;
 }
 
-#txtTele{
-    width: 80%;
-    height: 3em;
-    background-color: rgb(255, 255, 255);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.7rem;
-    margin: 0;
-    border-radius: 5px;
-    margin: 1rem ;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+#txtTele {
 
+  width: 90%;
+  height: 3em;
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 1.7rem;
+  margin: 0;
+  border-radius: 5px;
+  margin: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  
+}
+
+#joino{
+  /* padding-left: 6rem; */
+}
+
+#outxt{
 
 }
 
-#resTele{
-    width: 90%;
-    height: 25rem;
-background-color: rgb(255, 255, 255);
-border-radius: 5px;
-/* background-image: url("https://media.istockphoto.com/photos/track-and-mountains-in-valle-del-lago-somiedo-nature-park-asturias-picture-id1370772148?k=20&m=1370772148&s=612x612&w=0&h=UtId6HL27edD9i1PmcEtethm3d7YMaNfATfjdCzYQ6E="); */
-display: flex;
-justify-content: space-evenly;
-align-items: center;
-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+#resTele {
+  width: 90%;
+  height: 25rem;
+  background-color: rgb(255, 255, 255);
+  border-radius: 5px;
+  /* background-image: url("https://media.istockphoto.com/photos/track-and-mountains-in-valle-del-lago-somiedo-nature-park-asturias-picture-id1370772148?k=20&m=1370772148&s=612x612&w=0&h=UtId6HL27edD9i1PmcEtethm3d7YMaNfATfjdCzYQ6E="); */
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+}
 
+
+#butp{
+  background-color: #00D9A1;
+  border-radius: 5px;
+}
+#butp:hover{
+  background-color: #fff;
+  /* border: solid 0.5px; */
+}
+
+/* 
+#butp{
+  background-color: transparent;
+  padding: 1.4rem;
+  font-size: small;
+  font-weight: 500;
+  color: #000000;
+  text-transform:none;
+}
+
+#butp:hover{
+  background-color: #00D9A1;
+  border-radius: 0;
 
 }
+#butp:focus{
+  font-weight: 550;
+  background-color: #00D9A1;
+  border-radius: 0;
+  font-weight: 550;
+
+} */

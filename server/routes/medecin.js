@@ -8,7 +8,7 @@ const express = require("express"),
  router.route("/").post(createMed);
  router.route("/all").get(showAllMed);
  router.route("/toResp").post(toResp);
- router.route("/getResp").get(getResp);
+ router.route("/getResp/:id").get(getResp);
  router.route("/:id").get(showMed).put(isLoggedIn, editMed).delete(isLoggedIn, deleteMed)
 
 

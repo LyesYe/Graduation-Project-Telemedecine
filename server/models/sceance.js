@@ -25,6 +25,10 @@ sceanceSchema = new mongoose.Schema({
     type: mongoose.Types.ObjectId,
     ref: "infirmier", 
   },
+  patient: {
+    type: mongoose.Types.ObjectId,
+    ref: "patient", 
+  },
   code: {
     type: String,
   },

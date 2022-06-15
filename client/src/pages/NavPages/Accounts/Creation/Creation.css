@@ -15,10 +15,11 @@
   /* margin: 10px 30vw 0; */
   display: flex;
   justify-content: space-between;
-  border-radius: 10px 10px 0 0;
+  border-radius: 5px 5px 0 0;
   align-items: center;
   background-color: rgb(255, 255, 255);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  margin-top: 10px;
 }
 .down {
   height: 90%;

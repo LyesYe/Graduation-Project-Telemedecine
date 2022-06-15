@@ -46,3 +46,13 @@ button:hover{
     background-color: #00D9A1;
     border-radius: 0;
 }
+
+
+#butt3{
+    background-color: #00D9A1;
+    padding: 1.4rem;
+    font-size: small;
+    font-weight: 500;
+    color: #000000;
+    text-transform:none;
+}

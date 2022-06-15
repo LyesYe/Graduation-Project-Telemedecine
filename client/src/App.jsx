@@ -21,6 +21,9 @@ import Pro from "./store/Protected";
 import Pro2 from "./store/Protected2";
 import Logout from "./pages/NavPages/Logout";
 import Tele from "./pages/NavPages/Teleconsultations/Tele";
+import JoinTele from "./pages/videoCall/JoinTele";
+import MesRequetes from "./pages/NavPages/req/MesRequetes";
+import FinalCall from "./pages/videoCall/FinalCall/FinalCall";
 
 function App() {
   const isloggedin = useSelector((state) => state.isLoggedIn);
@@ -58,8 +61,10 @@ function App() {
             <Route path="/dashboard/Test" exact element={<Test />} />
             <Route path="/Accounts" exact element={<Accounts />} />
             <Route path="/Hospitals" exact element={<Hospitals />} />
-            <Route path="/Teleconsulation" exact element={<Tele />} />
+            <Route path="/Teleconsulation" exact element={<JoinTele />} />
             <Route path="/Teleconsultations" exact element={<Tele />} />
+            <Route path="/MesRequetes" exact element={<MesRequetes />} />
+            <Route path="/FinalCall" exact element={<FinalCall />} />
             <Route path="/Logout" exact element={<Logout />} />
             {/* <Route path="/Hospitals" exact element={<Hospitals />} /> */}
 

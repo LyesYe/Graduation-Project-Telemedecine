@@ -81,7 +81,7 @@ mongoose
         dbName: "pfeAPI",
     })
     .then((con) => {
-        console.log("Database is connected");
+        console.log("Database is connected-------------------------------------------------------------------------------------------------------------------------------------");
         app.listen(port, () => {
             console.log(`Server started on ${port}`);
         });

@@ -57,22 +57,22 @@ const Accounts = (props) => {
   return (
     <div id="accontainer">
       <div className="side">
-        <Button id="butt" onClick={() => setComponents("first")}>
+        <Button id="butt3" onClick={() => setComponents("first")}>
           {" "}
-          Consulter
+           Gerer Les Utilisateur
         </Button>
-        <Button id="butt" onClick={() => setComponents("second")}>
+        {/* <Button id="butt" onClick={() => setComponents("second")}>
           {" "}
-          Gestion
-        </Button>
+          Gerer Les Utilisateur
+        </Button> */}
         <Button id="butt" onClick={() => setComponents("third")}>
           {" "}
           Creation
         </Button>
-        <Button id="butt" onClick={() => setComponents("fourth")}>
+        {/* <Button id="butt" onClick={() => setComponents("fourth")}>
           {" "}
           fourth
-        </Button>
+        </Button> */}
       </div>
       <div className="left">
         {components === "first" && <Consulter />}
@@ -81,7 +81,7 @@ const Accounts = (props) => {
           <Creation hopArray={hopitales} sopArray={specialites} />
         )}
         {/* {components === "third" && <Creation  />} */}
-        {components === "fourth" && <Test />}
+        {/* {components === "fourth" && <Test />} */}
       </div>
     </div>
   );
