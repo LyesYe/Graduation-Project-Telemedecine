@@ -20,14 +20,14 @@ import './Nav.css'
 
 const pagesAdmin = ['Accounts', 'Hospitals', 'Teleconsulation'];
 const pagesMedecin = ['Patients', 'Teleconsultations', 'MesRequetes'];
-const pagesInfirmier = ['Patients', 'Teleconsultation', 'here'];
-const pagesPatient = ['mssed', 'cin', 'here'];
+const pagesInfirmier = ['Patients', 'Teleconsultation'];
+const pagesPatient = ['MonDossier', 'Upload'];
 const settings = ['Profile', 'Logout'];
 var pages ; 
 const ResponsiveAppBar = () => {
 
     const isloggedin = useSelector ((state) => state.isLoggedIn);
-	console.log("nav"+isloggedin)
+	console.log("nav"+isloggedin) 
 	console.log("nav -- "+localStorage.getItem("logi"))
     
     

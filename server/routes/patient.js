@@ -4,7 +4,7 @@ const express = require("express"),
  router = express.Router(),
  { createPat,showPat ,updateInfo, showAllPat,editPat,deletePat} = require("../middleware/patient");
 
-
+ 
  router.route("/").post(createPat);
  router.route("/all").get(showAllPat);
  router.route("/updateInfo").get(isLoggedIn,updateInfo);
