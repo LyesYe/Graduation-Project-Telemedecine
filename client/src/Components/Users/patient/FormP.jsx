@@ -7,6 +7,21 @@ import axios from "axios";
 import "./FormP";
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 function FormP() {
+
+  function generateString(length) {
+    let result = ' ';
+    const charactersLength = characters.length;
+    for ( let i = 0; i < length; i++ ) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+
+    return result;
+}
+  
+  const link = "https://pfe-back-ye.herokuapp.com/";
+  
+
+
   const [values, setValues] = useState({
     lastname: "",
     firstname: "",
@@ -17,14 +32,14 @@ function FormP() {
     adresse: "",
     dateNaiss: "",
     numero: "",
-    password: "",
+    password: generateString(6),
   });
 
   const sendRequest = async () => {
-    const newP = { password: "13102001" };
-    setValues(newP);
+    
+
     const res = await axios
-      .post("http://localhost:3001/patient/", {
+      .post(`${link}patient/`, {
         lastname: values.lastname,
         firstname: values.firstname,
         username: values.username,

@@ -5,7 +5,8 @@ import Peer from 'simple-peer';
 const SocketContext = createContext();
 
 // const socket = io('http://localhost:3001');
-const socket = io('http://localhost:5000');
+const socket = io('https://pfe-soket-ye.herokuapp.com/');
+// const socket = io('http://localhost:5000');
 //const socket = io('https://warm-wildwood-81069.herokuapp.com');
 
 const ContextProvider = ({ children }) => {
@@ -30,7 +31,7 @@ const ContextProvider = ({ children }) => {
   }, []);
 
   const answerCall = () => {
-    setCallAccepted(true);
+    setCallAccepted(true);  
 
     const peer = new Peer({ initiator: false, trickle: false, stream });
 

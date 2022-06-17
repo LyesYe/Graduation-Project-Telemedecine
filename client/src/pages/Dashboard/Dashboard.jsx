@@ -6,6 +6,8 @@ import { AppBar, Box, Tab, Tabs, Toolbar, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
+const link = "https://pfe-back-ye.herokuapp.com/";
+
 
 const Dashboard = () => {
 
@@ -15,7 +17,7 @@ const Dashboard = () => {
 	const [user, setUser] = useState('')
 
 	const getUsers = () => {
-		axios.get("http://localhost:3001/user/",{
+		axios.get( `${link}user/`,{
 			headers : {
 	   Authorization:'Bearer '+localStorage.getItem('token')
 		}

@@ -8,22 +8,36 @@ import "./FormI.css";
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 
 function FormI(props) {
+
+
+  const link = "https://pfe-back-ye.herokuapp.com/";
+
+  function generateString(length) {
+    let result = ' ';
+    const charactersLength = characters.length;
+    for ( let i = 0; i < length; i++ ) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+
+    return result;
+}
+
+
   const [values, setValues] = useState({
     lastname: "",
     firstname: "",
     username: "",
     email: "",
-    password: "",
+    password: generateString(6),
     hopitalA: "",
   });
 
   const [hop, sethop] = useState([]);
 
   const sendRequest = async () => {
-    const newP = { password: "13102001" };
-    setValues(newP);
+  
     const res = await axios
-      .post("http://localhost:3001/infirmier/", {
+      .post(  `${link}infirmier/`, {
         email: values.email,
         username: values.username,
         firstname: values.firstname,

@@ -2,6 +2,10 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import "./MesRequetes.css";
 import SessCard from "./SessCard";
+
+const link = "https://pfe-back-ye.herokuapp.com/";
+
+
 const MesRequetes = () => {
 
     
@@ -9,7 +13,7 @@ const MesRequetes = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3001/sceance/get/${localStorage.getItem('username')}`, {
+      .get(`${link}sceance/get/${localStorage.getItem('username')}`, {
         headers: { 
           Authorization: "Bearer" + localStorage.getItem("token"),
         },

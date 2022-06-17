@@ -3,12 +3,14 @@ import HopCard from "./HopCard";
 import "./Hopo.css";
 import axios from "axios";
 
+const link = "https://pfe-back-ye.herokuapp.com/";
+
 const Hopo = () => {
   const [hopitales, sethopitales] = useState([]);
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/hopital/all", {
+      .get(`${link}hopital/all`, {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("token"),
         },

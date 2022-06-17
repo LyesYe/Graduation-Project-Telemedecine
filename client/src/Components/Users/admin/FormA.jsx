@@ -9,24 +9,60 @@ import axios from "axios";
 import "./FormA.css";
 import { useEffect } from "react";
 
+
 function FormA(props) {
+
+  const link = "https://pfe-back-ye.herokuapp.com/";
+
+  const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+  function generateString(length) {
+      let result = ' ';
+      const charactersLength = characters.length;
+      for ( let i = 0; i < length; i++ ) {
+          result += characters.charAt(Math.floor(Math.random() * charactersLength));
+      }
+  
+      return result;
+  }
+
+
+  // useEffect(() => {
+  //   console.log("object");
+  //   const res =  axios
+  //     .post("http://localhost:3001/send_mail", {
+  //       text: "hiii",
+  //     })
+  //     .catch((err) => console.log(err));
+    
+  // }, []);
+
   const [values, setValues] = useState({
     email: "",
     username: "",
     firstname: "",
     lastname: "",
-    password: "",
+    password:  generateString(6),
     hopitalResp: "",
     // wilaya: "",
   });
 
   const [hop, sethop] = useState([]);
   const sendRequest = async () => {
-    const newP = { password: "13102001" };
-    setValues(newP);
+    // const p = 
+    // console.log(p)
+    // const newP = { password: p };
+    // setValues(newP);
+
+    const res2 =  axios
+      .post(`${link}send_mail`, {
+        text: values.password,
+        email:values.email
+      })
+      .catch((err) => console.log(err));
 
     const res = await axios
-      .post("http://localhost:3001/admin/", {
+      .post(`${link}admin`, {
         email: values.email,
         username: values.username,
         firstname: values.firstname,

@@ -20,10 +20,14 @@ import { useDispatch } from 'react-redux';
 import { authActions } from '../../store';
 import HealingIcon from '@mui/icons-material/Healing';
 
+const link = "https://pfe-back-ye.herokuapp.com/";
 
 
 
 const AuthForm = () => {
+
+
+
 
   const dispatch = useDispatch();
 
@@ -47,7 +51,7 @@ const AuthForm = () => {
 
 
   const sendRequest = async () => {
-    const res = await axios.post('http://localhost:3001/auth/login',{
+    const res = await axios.post(`${link}auth/login`,{
       username: inputs.username,
       password: inputs.password,
     }).catch(err => console.log(err));

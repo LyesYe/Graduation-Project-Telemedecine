@@ -11,6 +11,8 @@ import "./Consulter.css";
 import Rec from "../../../../Components/affichage/Rec.jsx";
 import axios from "axios";
 
+const link = "https://pfe-back-ye.herokuapp.com/";
+
 const Consulter = () => {
 
   //   const [nom, setnom] = useState([]);
@@ -20,7 +22,7 @@ const Consulter = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/user", {
+      .get(`${link}user/`, {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("token"),
         },
@@ -36,10 +38,12 @@ const Consulter = () => {
       });
   }, []);
 
+  
+
   const handleChange = (event) => {
     setuser(event.target.value);
     axios
-      .get(`http://localhost:3001/${event.target.value}/all`, {
+      .get(`${link}${event.target.value}/all`, {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("token"),
         },

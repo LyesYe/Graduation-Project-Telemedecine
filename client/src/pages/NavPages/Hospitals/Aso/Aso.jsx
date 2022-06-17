@@ -11,6 +11,7 @@ import Card from "../../../../Components/UI/Card";
 import FormInput from "../../../../Components/Users/FormInput";
 // import Button from "../../../../Components/UI/Button";
 
+const link = "https://pfe-back-ye.herokuapp.com/";
 
 const Aso = () => {
   const [values, setValues] = useState({
@@ -29,7 +30,7 @@ const Aso = () => {
   const sendRequest = async () => {
 
     const res = await axios
-      .post("http://localhost:3001/med/toResp/", {
+      .post(`${link}med/toResp/`, {
         username: Username,
       })
       .catch((err) => console.log(err));
@@ -71,7 +72,7 @@ const Aso = () => {
 
   useEffect(() => {
     axios
-    .get("http://localhost:3001/med/all", {
+    .get(`${link}med/all`, {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("token"),
       },

@@ -14,6 +14,10 @@ import Test from "../../test/Test";
 import "./accounts.css";
 import Consulter from "./Consulter/Consulter";
 import Creation from "./Creation/Creation";
+
+const link = "https://pfe-back-ye.herokuapp.com/";
+
+
 const Accounts = (props) => {
   const [components, setComponents] = useState("first");
 
@@ -22,7 +26,7 @@ const Accounts = (props) => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/hopital/all", {
+      .get(`${link}hopital/all`,{
         headers: {
           Authorization: "Bearer " + localStorage.getItem("token"),
         },
@@ -37,7 +41,7 @@ const Accounts = (props) => {
       });
 
     axios
-      .get("http://localhost:3001/specialite/all", {
+      .get(`${link}specialite/all`, {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("token"),
         },

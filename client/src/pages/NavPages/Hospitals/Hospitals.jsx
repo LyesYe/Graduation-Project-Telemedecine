@@ -20,6 +20,7 @@ import Hopo from "./Hopo/Hopo";
 import "./Hospitals.css";
 
 
+const link = "https://pfe-back-ye.herokuapp.com/";
 
 
 const Hospitals = (props) => {
@@ -30,7 +31,7 @@ const Hospitals = (props) => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/hopital/all", {
+      .get(`${link}hopital/all`, {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("token"),
         },
@@ -45,7 +46,7 @@ const Hospitals = (props) => {
       });
 
     axios
-      .get("http://localhost:3001/specialite/all", {
+      .get(`${link}specialite/all`, {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("token"),
         },
