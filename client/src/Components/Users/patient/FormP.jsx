@@ -7,6 +7,7 @@ import axios from "axios";
 import "./FormP";
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 function FormP() {
+  const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
   function generateString(length) {
     let result = ' ';

@@ -39,7 +39,7 @@ const Aso = () => {
 
 
     
-    if (res.status == 201) {
+    if (res.status == 200) {
       alert("assign succes");
     } else {
       alert("Please check probs");
@@ -62,7 +62,7 @@ const Aso = () => {
   function addUserHandler(event) {
     event.preventDefault();
     console.log("submit");
-    console.log(values);
+    console.log(Username);
     sendRequest();
   }
 

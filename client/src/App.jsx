@@ -24,6 +24,7 @@ import Tele from "./pages/NavPages/Teleconsultations/Tele";
 import JoinTele from "./pages/videoCall/JoinTele";
 import MesRequetes from "./pages/NavPages/req/MesRequetes";
 import FinalCall from "./pages/videoCall/FinalCall/FinalCall";
+import Pat from "./pages/NavPages/Patients/Pat";
 
 function App() {
   const isloggedin = useSelector((state) => state.isLoggedIn);
@@ -65,6 +66,7 @@ function App() {
             <Route path="/Teleconsultations" exact element={<Tele />} />
             <Route path="/MesRequetes" exact element={<MesRequetes />} />
             <Route path="/FinalCall" exact element={<FinalCall />} />
+            <Route path="/Patients" exact element={<Pat />} />
             <Route path="/Logout" exact element={<Logout />} />
             {/* <Route path="/Hospitals" exact element={<Hospitals />} /> */}
 

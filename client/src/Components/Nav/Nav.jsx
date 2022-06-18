@@ -20,7 +20,7 @@ import './Nav.css'
 
 const pagesAdmin = ['Accounts', 'Hospitals', 'Teleconsulation'];
 const pagesMedecin = ['Patients', 'Teleconsultations', 'MesRequetes'];
-const pagesInfirmier = ['Patients', 'Teleconsultation'];
+const pagesInfirmier = ['Patients', 'Teleconsulation'];
 const pagesPatient = ['MonDossier', 'Upload'];
 const settings = ['Profile', 'Logout'];
 var pages ; 

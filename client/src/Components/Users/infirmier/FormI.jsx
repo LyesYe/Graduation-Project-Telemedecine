@@ -11,6 +11,7 @@ function FormI(props) {
 
 
   const link = "https://pfe-back-ye.herokuapp.com/";
+  const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
   function generateString(length) {
     let result = ' ';

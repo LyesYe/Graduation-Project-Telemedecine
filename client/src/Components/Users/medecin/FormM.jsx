@@ -9,7 +9,8 @@ import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 
 function FormM(props) {
 
-  
+  const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
   function generateString(length) {
     let result = ' ';
     const charactersLength = characters.length;

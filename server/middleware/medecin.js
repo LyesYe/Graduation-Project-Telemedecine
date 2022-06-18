@@ -69,7 +69,7 @@ module.exports = {
             console.log(med)
             med.isResp = '1';
             await med.save();
-            res.json({ deleted: "changed to resp" });
+            res.status(200).json({ done: "changed to resp" });
         } catch (e) {
             res.json({ error: e.message });
         }
