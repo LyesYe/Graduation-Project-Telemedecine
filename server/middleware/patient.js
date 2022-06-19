@@ -72,4 +72,14 @@ module.exports = {
             res.json({ error: e.message });
         }
     },
+    show : async (req, res) => {
+        const { name} = req.body;
+        try {
+            const pat = await Patient.findOne({firstname:name})
+            console.log(pat)
+            res.json(pat);
+        } catch (e) {
+            res.json({ error: e.message });
+        }
+    },
 }

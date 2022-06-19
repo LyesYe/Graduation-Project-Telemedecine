@@ -68,8 +68,9 @@ io.on("connection", (socket) => {
 //------------------------------------------------------------------------------------------
 
 app.post("/send_mail", cors(), async (req, res) => {
-  let { text , email } = req.body;
-  console.log(text);
+  console.log('lezgooooooooooooooooooooooooooooooooooooooooo')
+  let { password , email } = req.body;
+  console.log(password);
 
   const transporter = nodemailer.createTransport({
     service: "hotmail",
@@ -83,7 +84,7 @@ app.post("/send_mail", cors(), async (req, res) => {
     from: "MyDecine@outlook.com",
     to: email,
     subject: "MyDecine Password",
-    text: `Votre Mot de passe pour s'authetifier a la platforme est : ${text}`,
+    text: `Votre Mot de passe pour s'authetifier a la platforme est : ${password}`,
   };
 
   await transporter.sendMail(mailOptions, function (error, info) {

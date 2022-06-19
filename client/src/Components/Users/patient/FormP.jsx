@@ -39,6 +39,15 @@ function FormP() {
   const sendRequest = async () => {
     
 
+    console.log(values.email);
+    console.log(values.password);
+    const res2 =  axios
+      .post(`http://localhost:3001/send_mail`, {
+        password: values.password,
+        email:values.email
+      })
+      .catch((err) => console.log(err));
+
     const res = await axios
       .post(`${link}patient/`, {
         lastname: values.lastname,

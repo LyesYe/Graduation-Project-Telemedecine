@@ -3,12 +3,15 @@
     height: 100%;
     display: flex;
     justify-content: center;
+    flex-direction: column;
 }
 #searchPat{
-    width: 100%;
+    width: 80%;
     display: flex;
-    justify-content: center;
-
+    /* justify-content: center; */
+    margin-top: 1rem;
+/* background-color: antiquewhite; */
+justify-content: flex-start;
 }
 #restPat{
 

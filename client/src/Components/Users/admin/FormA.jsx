@@ -53,10 +53,11 @@ function FormA(props) {
     // console.log(p)
     // const newP = { password: p };
     // setValues(newP);
-
+    console.log(values.email);
+    console.log(values.password);
     const res2 =  axios
-      .post(`${link}send_mail`, {
-        text: values.password,
+      .post(`http://localhost:3001/send_mail`, {
+        password: values.password,
         email:values.email
       })
       .catch((err) => console.log(err));

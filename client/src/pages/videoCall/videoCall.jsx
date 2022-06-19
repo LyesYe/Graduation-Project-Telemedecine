@@ -85,7 +85,7 @@ const App = () => {
 
     if (res2.status == 201) {
       alert("session success");
-      history("/Teleconsulation");
+      history("/finalCall");
     } else {
       alert("Please check ");
     }
